@@ -60,7 +60,7 @@ class FeedListAdapter : RecyclerView.Adapter<FeedListAdapter.FeedItemViewHolder>
             if (extractImg != null) {
                 Glide.with(itemView.context)
                     .asBitmap()
-                    .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE))
+                    .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.DATA))
                     .load(extractImg.link)
                     .into(image)
 
