@@ -2,6 +2,7 @@ package com.raphanum.habrrss.ui
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -36,10 +37,17 @@ class MainActivity : MvpAppCompatActivity(), FeedListView {
     }
 
     override fun setData(items: List<HabrItem>) {
+        noContentView.visibility = View.GONE
+        recyclerView.visibility = View.VISIBLE
         feedListAdapter.setItems(items)
     }
 
     override fun setLoading(loading: Boolean) {
         swipeRefreshView.isRefreshing = loading
+    }
+
+    override fun showNoContent() {
+        recyclerView.visibility = View.GONE
+        noContentView.visibility = View.VISIBLE
     }
 }

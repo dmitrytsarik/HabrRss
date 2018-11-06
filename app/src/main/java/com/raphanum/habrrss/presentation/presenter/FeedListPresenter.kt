@@ -30,10 +30,15 @@ class FeedListPresenter(private val repository: HabrRepository) : MvpPresenter<F
             .subscribe({
                 Log.d("HABR_RSS", "Items: $it")
                 viewState.setLoading(false)
-                viewState.setData(it)
+                if (it.isNotEmpty()) {
+                    viewState.setData(it)
+                } else {
+                    viewState.showNoContent()
+                }
             },
                 {
                     viewState.setLoading(false)
+                    viewState.showNoContent()
                     it.printStackTrace()
                 })
     }

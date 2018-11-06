@@ -7,4 +7,6 @@ interface FeedListView : MvpView {
     fun setData(items: List<HabrItem>)
 
     fun setLoading(loading: Boolean)
+
+    fun showNoContent()
 }
